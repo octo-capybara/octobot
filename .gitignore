@@ -14,9 +14,47 @@ build/
 venv/
 env/
 
-# Config (contains tokens — never commit)
+# ── Sensitive — never commit ───────────────────────────────────────
+# Config files (contain API tokens)
 config.yaml
 *.local.yaml
+config.local.*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa
+id_ed25519
+id_ecdsa
+*.pub
+
+# AWS / cloud credentials
+.aws/
+credentials
+*_credentials.json
+service-account*.json
+
+# Secrets / token files
+*secret*
+*token*
+*password*
+*passwd*
+*apikey*
+*api_key*
+# but keep example/template files
+!*.example
+!*.sample
+!*.template
+# ──────────────────────────────────────────────────────────────────
 
 # State
 *.db
