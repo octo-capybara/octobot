@@ -1,0 +1,18 @@
+[Unit]
+Description=Octobot — automated YouTrack bug analysis daemon
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=octobot
+WorkingDirectory=/opt/octobot
+Environment=OCTOBOT_CONFIG=/etc/octobot/config.yaml
+ExecStart=/opt/octobot/.venv/bin/octobot-daemon
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,36 @@
+# Project: [Your Project Name]
+
+## Architecture Overview
+[Describe the high-level architecture: services, layers, main components]
+
+## Tech Stack
+- Language:
+- Framework:
+- Database:
+- Key libraries:
+
+## Repository Structure
+```
+src/
+├── [module]/       # [what it does]
+├── [module]/       # [what it does]
+tests/
+docs/
+```
+
+## Key Entry Points
+- `src/main.py` — application entry point
+- `src/api/` — REST API handlers
+- `src/models/` — data models
+
+## Common Bug Areas
+[List areas of the code that are historically bug-prone or complex]
+
+## Conventions
+- [naming conventions]
+- [error handling patterns]
+- [important invariants]
+
+## What to look for when analyzing bugs
+- [domain-specific hints for root cause analysis]
+- [known quirks or gotchas in the codebase]

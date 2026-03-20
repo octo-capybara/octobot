@@ -1,0 +1,40 @@
+youtrack:
+  base_url: "https://yourcompany.youtrack.cloud"
+  token: "perm:your-permanent-token-here"
+  project: "PROJ"
+  bot_login: "octobot"         # YouTrack username of the bot account
+  bug_tag: "tipo: bug"         # YouTrack tag that marks bug tickets
+  ignore_tag: "octobot-ignore" # tag to skip a ticket
+  cutoff_date: "2025-01-01"    # ignore tickets created before this date
+  ssl_verify: true             # set false if behind a corporate SSL-inspection proxy
+
+anthropic:
+  token: "sk-ant-your-token-here"
+  model: "claude-sonnet-4-6"  # change to claude-haiku-4-5-20251001 to reduce costs
+
+# List all repositories the bot should have access to.
+# Each repo needs a short "name" used as prefix in file references (e.g. "backend:src/foo.py").
+# Add as many as needed. If you only have one repo, the list still works.
+repositories:
+  - name: "backend"
+    url: "https://github.com/org/backend.git"
+    path: "/opt/repos/backend"
+    branch: "main"
+    claude_md_path: "CLAUDE.md"
+    git_token: "${GITLAB_TOKEN}"  # set via env var — or put the token directly here
+  - name: "frontend"
+    url: "https://github.com/org/frontend.git"
+    path: "/opt/repos/frontend"
+    branch: "main"
+    claude_md_path: "CLAUDE.md"
+
+scheduler:
+  start_hour: 8               # active from 08:00
+  end_hour: 21                # active until 21:00 (exclusive)
+  poll_interval_minutes: 15   # how often to poll YouTrack
+
+state:
+  db_path: "~/.octobot/state.db"       # SQLite DB path; ~ is expanded
+  log_file: "/var/log/octobot/octobot.log"
+  log_max_bytes: 10485760               # 10 MB per file
+  log_backup_count: 5                   # keep last 5 rotated files

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "octobot"
+version = "0.1.0"
+description = "Automated YouTrack bug analysis bot powered by Claude"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic>=0.25.0",
+    "requests>=2.31.0",
+    "pyyaml>=6.0",
+    "click>=8.1.0",
+]
+
+[project.scripts]
+analyze = "octobot.cli:analyze"
+octobot-daemon = "octobot.daemon:main"
+octobot-setup = "octobot.wizard:main"
+octobot-status = "octobot.status:status"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.md"]
